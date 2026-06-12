@@ -1,0 +1,62 @@
+===Base de datos agenda_db
+
+== Estructura de tabla para la tabla login
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id_login**//|int(10)|No|
+|**correo**|varchar(120)|No|
+|contrasena|varchar(255)|No|
+|creado_en|timestamp|No|current_timestamp()
+|is_pro|tinyint(1)|Sí|0
+== Volcado de datos para la tabla login
+
+|3|test2@test.com|$2y$10$iXURqdpxnXZVJr.EdaCxXOBcafOX43nq3wi7zqzFjQ2E8lpje4O5C|2026-06-11 21:24:27|0
+|4|nuevo@test.com|$2y$10$DDboqtZrwNWPrPfptHpGI.ltlOREqPA/gXrth6jjegcMG3wvF7keO|2026-06-11 21:28:56|0
+|5|yuli@agenda.com|$2y$10$ueLXRqxbUZhsT1nQBAl0yuCC4pcQYXTqn0wllMdR.M3WozT/Ujz7G|2026-06-11 21:30:03|0
+== Estructura de tabla para la tabla notas
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id_nota**//|int(10)|No|
+|id_login|int(10)|No|
+|titulo|varchar(200)|No|
+|descripcion|text|Sí|NULL
+|creado_en|timestamp|No|current_timestamp()
+== Volcado de datos para la tabla notas
+
+|1|5|EXAMEN PROXIMO|Repasar mas sobre el tema Passive Voice |2026-06-11 21:43:10
+== Estructura de tabla para la tabla pagos
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id_pago**//|int(10)|No|
+|id_login|int(10)|No|
+|mp_preference_id|varchar(200)|Sí|NULL
+|mp_payment_id|varchar(200)|Sí|NULL
+|monto|decimal(10,2)|No|
+|estado|enum(&#039;pendiente&#039;, &#039;aprobado&#039;, &#039;rechazado&#039;, &#039;cancelado&#039;)|Sí|pendiente
+|descripcion|varchar(255)|Sí|NULL
+|creado_en|timestamp|No|current_timestamp()
+== Volcado de datos para la tabla pagos
+
+|1|5|179cd67148d347b2baa80eab69c01d53|NULL|99.00|pendiente|Agenda Pro - 1 mes gratis|2026-06-11 21:55:53
+|2|5|2cf321f7f10b492aa2801728366718e1|NULL|99.00|pendiente|Agenda Pro - 1 mes gratis|2026-06-11 22:11:34
+== Estructura de tabla para la tabla tareas
+
+|------
+|Columna|Tipo|Nulo|Predeterminado
+|------
+|//**id_tarea**//|int(10)|No|
+|id_login|int(10)|No|
+|nombre_tarea|varchar(200)|No|
+|fecha_entrega|date|Sí|NULL
+|descripcion|text|Sí|NULL
+|status|enum(&#039;P&#039;, &#039;En&#039;, &#039;F&#039;)|Sí|P
+|creado_en|timestamp|No|current_timestamp()
+== Volcado de datos para la tabla tareas
+
+|3|5|Examen Ingles|2026-06-22|Guia Examen|P|2026-06-11 21:32:30
